@@ -1,27 +1,21 @@
 # data-pulse-hub
 Hub de rotina de estudos e gerador de conteúdo para o LinkedIn para alunos de Data Analytics
 
+ 📊 Data Pulse Hub
 
-📊 Data Pulse Hub
+Um hub digital desenvolvido para apoiar a rotina de estudos, constância e organização de registros na área de Análise de Dados.
 
-O **Data Pulse Hub** é uma aplicação web criada para organizar a rotina de estudos em Análise de Dados e facilitar a criação de conteúdo para o LinkedIn.
+# Sobre o Projeto
+O **Data Pulse Hub** funciona como um guia prático de templates e rascunhos para ajudar estudantes e profissionais a manterem a constância no compartilhamento de seus avanços e na organização de anotações do dia a dia.
 
-O objetivo da ferramenta é ajudar estudantes e profissionais iniciantes a manterem a constância nos estudos e compartilharem seus aprendizados de forma prática e estruturada.
+# Funcionalidades
+- **Vitrine de Modelos:** Biblioteca de estruturas práticas prontas para copiar e colar no LinkedIn (foco em rotina de estudos, resolução de desafios diários e resumos).
+- **Bloco de Notas Pessoal:** Espaço integrado com armazenamento local (`LocalStorage`) para anotações e rascunhos salvos diretamente no navegador.
+  
 
-🔗 **Acesse a aplicação online:** https://evelinlins.github.io/data-pulse-hub/
-
----
-
-# O que o app faz?
-
-- **Gerador de Posts Diários:** Sugestões e estruturas de posts prontas para personalizar e publicar no LinkedIn.
-- **Trilha Base vs. Trilha Pro:** Conteúdos focados em prática técnica (Python, Pandas, SQL) e na visão de negócio/UX (métricas de produto, retenção, churn).
-- **Contador de Ofensiva (Streak):** Acompanhamento diário para manter a constância de estudos e publicações.
-- **Sem cadastros:** Todos os dados ficam salvos com privacidade no próprio navegador via `localStorage`.
+# 🎨 Identidade Visual & Branding (Bríven)
+- **Design Autoral:** Concebido e estruturado com base na identidade visual e na paleta de cores da **Bríven** (Roxo Escuro e Verde Briven).
+- **Estética Sóbria:** Interface limpa, profissional e responsiva em grid, focada em usabilidade e leitura agradável.
 
 ---
-
-# Tecnologias
-
-- **Frontend:** HTML5, CSS3, JavaScript Vanilla
-- **Hospedagem:** GitHub Pages
+Desenvolvido por **Evelin Lins** | **Bríven**
