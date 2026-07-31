@@ -1,7 +1,4 @@
-# data-pulse-hub
-Hub de rotina de estudos e gerador de conteúdo para o LinkedIn para alunos de Data Analytics
-
- 📊 Data Pulse Hub
+# 📊 Data Pulse Hub
 
 Um hub digital desenvolvido para apoiar a rotina de estudos, constância e organização de registros na área de Análise de Dados.
 
