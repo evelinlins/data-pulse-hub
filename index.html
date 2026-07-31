@@ -11,7 +11,6 @@
             --bg-card-inner: #11081f;
             --accent-green: #238662;
             --accent-green-bright: #2ea043;
-            --accent-purple: #58a6ff;
             --text-light: #e6edf3;
             --text-muted: #8b949e;
             --border-color: #28193d;
@@ -28,7 +27,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
         }
 
@@ -50,7 +49,7 @@
             font-size: 0.95rem;
         }
 
-        /* Banner de Dica */
+        /* Banner de Horário de Pico */
         .reminder-box {
             background-color: var(--bg-card);
             border-left: 4px solid var(--accent-green-bright);
@@ -59,25 +58,13 @@
             margin-bottom: 30px;
             font-size: 0.9rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tag {
-            background-color: var(--accent-green);
-            color: #fff;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
         }
 
         /* Grid da Vitrine de Conteúdos */
         .grid-templates {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
             margin-bottom: 35px;
         }
@@ -86,7 +73,7 @@
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 20px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -94,14 +81,8 @@
 
         .template-card h3 {
             margin-top: 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--accent-green-bright);
-        }
-
-        .template-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
         }
 
         .post-preview {
@@ -113,8 +94,8 @@
             line-height: 1.5;
             white-space: pre-line;
             color: var(--text-light);
-            margin-bottom: 15px;
-            max-height: 180px;
+            margin: 10px 0 15px 0;
+            max-height: 160px;
             overflow-y: auto;
         }
 
@@ -135,10 +116,10 @@
             color: #fff;
         }
 
-        /* Seção Inferior: Ferramentas */
+        /* Seção Inferior: Bloco de Notas */
         .bottom-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 20px;
         }
 
@@ -169,29 +150,6 @@
             font-family: inherit;
             resize: none;
         }
-
-        input.form-input, textarea.form-text {
-            width: 100%;
-            background-color: var(--bg-card-inner);
-            border: 1px solid var(--border-color);
-            color: var(--text-light);
-            border-radius: 6px;
-            padding: 10px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            font-family: inherit;
-        }
-
-        button.btn-submit {
-            background-color: var(--accent-green);
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -199,116 +157,365 @@
 <div class="container">
     <header>
         <h1>📊 DATA PULSE HUB</h1>
-        <p class="subtitle">Modelos de Conteúdo sem Neura de Dias, Anotações e Dúvidas</p>
+        <p class="subtitle">Guia de Constância & Rascunhos de Estudos em Dados</p>
     </header>
 
-    <!-- Lembrete das 10h -->
+    <!-- Apenas Lembrete do Horário de Pico -->
     <div class="reminder-box">
-        <span>⏰ <strong>Horário Recomendado:</strong> O pico de engajamento no LinkedIn costuma ser por volta das <strong>10:00</strong> da manhã.</span>
-        <span class="tag">Frequência: 1 a 2x por semana</span>
+        <span>⏰ <strong>Horário de Pico:</strong> 10:00 AM</span>
     </div>
 
-    <!-- VITRINE EM GRID (Todos os conteúdos visíveis de uma vez) -->
-    <h2 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--text-light);">Escolha o tema que quer postar hoje:</h2>
+    <h2 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--text-light);">30 Modelos Simples para Registro de Rotina:</h2>
     
     <div class="grid-templates">
         
-        <!-- Card 1 -->
+        <!-- 1 -->
         <div class="template-card">
             <div>
-                <h3>💻 Aprendi Algo Novo</h3>
-                <p>Para compartilhar comandos, bibliotecas ou conceitos práticos de Python/SQL sem enrolação.</p>
-                <div class="post-preview" id="post1">Hoje estudando Análise de Dados foquei em entender melhor como funciona o [Nome do Comando].
+                <h3>01. Estudo do Dia</h3>
+                <div class="post-preview" id="post1">Mais um dia dedicado aos estudos de Análise de Dados! 📊
 
-Em termos simples, ele serve para [explicar a utilidade em 1 frase].
+Hoje pratiquei alguns conceitos básicos de [Assunto/Ferramenta]. Seguimos no foco!
 
-O detalhe mais legal que notei ao aplicar foi [compartilhe uma sacada].
-
-Você costuma usar essa abordagem nos seus projetos? 👇
-
-#DataAnalytics #Python #LearningInPublic</div>
+#DataAnalytics #Estudos #Tech</div>
             </div>
-            <button class="btn-copy" onclick="copiarTexto('post1')">📋 Copiar Este Modelo</button>
+            <button class="btn-copy" onclick="copiarTexto('post1')">📋 Copiar Modelo</button>
         </div>
 
-        <!-- Card 2 -->
+        <!-- 2 -->
         <div class="template-card">
             <div>
-                <h3>🛠️ Resolvi um Erro / Perrengue</h3>
-                <p>Humanize seu perfil mostrando como encontrou e corrigiu um erro de sintaxe no código.</p>
-                <div class="post-preview" id="post2">Passei um tempo tentando entender por que meu código não rodava no [Google Colab/VS Code].
+                <h3>02. Erro de Sintaxe</h3>
+                <div class="post-preview" id="post2">Passei um tempo procurando um erro no código e era só uma vírgula faltando... 😅
 
-No final, o problema era [ex: uma vírgula faltando / tipo de dado incorreto].
+Faz parte do aprendizado! Quem nunca?
 
-Entender como ler mensagens de erro é metade do trabalho em dados. Seguimos! 😅
-
-Já passou por algum erro bobo assim essa semana?
-
-#Python #DataAnalytics #Debugging</div>
+#Python #SQL #Aprendizado</div>
             </div>
-            <button class="btn-copy" onclick="copiarTexto('post2')">📋 Copiar Este Modelo</button>
+            <button class="btn-copy" onclick="copiarTexto('post2')">📋 Copiar Modelo</button>
         </div>
 
-        <!-- Card 3 -->
+        <!-- 3 -->
         <div class="template-card">
             <div>
-                <h3>📈 Resumo de Estudos</h3>
-                <p>Excelente para registrar a constância e o progresso das matérias do bootcamp.</p>
-                <div class="post-preview" id="post3">Passando para registrar mais um ciclo concluído na formação de Data Analytics! 🚀
+                <h3>03. Resumo Semanal</h3>
+                <div class="post-preview" id="post3">Encerrando mais uma semana de aprendizado no bootcamp! 🚀
 
-Alguns dos pontos principais que trabalhei recentemente:
-- [Tópico 1 estudado]
-- [Tópico 2 estudado]
-- [Mini-exercício concluído]
+Tópicos vistos:
+- [Tópico 1]
+- [Tópico 2]
 
-Constância > Intensidade. Um passo por vez!
-
-#DataAnalytics #ContinuousLearning</div>
+#DataAnalytics #Bootcamp</div>
             </div>
-            <button class="btn-copy" onclick="copiarTexto('post3')">📋 Copiar Este Modelo</button>
+            <button class="btn-copy" onclick="copiarTexto('post3')">📋 Copiar Modelo</button>
         </div>
 
-        <!-- Card 4 (Trilha Pro) -->
-        <div class="template-card" style="border-color: var(--accent-green);">
+        <!-- 4 -->
+        <div class="template-card">
             <div>
-                <h3>💎 Trilha Pro: Estratégia & UX</h3>
-                <p>Visão de negócio, retenção e métricas de comportamento do usuário.</p>
-                <div class="post-preview" id="post4">Ao analisar o engajamento de uma marca ou produto, olhar apenas para métricas de vaidade pode enganar.
+                <h3>04. Instalação de Ferramentas</h3>
+                <div class="post-preview" id="post4">Ambiente configurado por aqui! Hoje instalei o [VS Code / Anaconda / Power BI] e dei os primeiros passos nas configurações. 💻
 
-Para entender se a experiência realmente retém o usuário, 3 pontos prioritários seriam:
-
-1️⃣ Frequência de retorno ao produto
-2️⃣ Clareza da proposta de valor
-3️⃣ Redução de atrito nos fluxos principais
-
-O papel do analista é unir código com visão de negócio.
-
-#ProductAnalytics #UX #Estrategia</div>
+#DataAnalytics #Setup #Tech</div>
             </div>
-            <button class="btn-copy" onclick="copiarTexto('post4')">📋 Copiar Este Modelo</button>
+            <button class="btn-copy" onclick="copiarTexto('post4')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 5 -->
+        <div class="template-card">
+            <div>
+                <h3>05. Hello World / Primeiro Código</h3>
+                <div class="post-preview" id="post5">O clássico 'Hello World' não pode faltar! Primeiras linhas de código rodando com sucesso por aqui em [Linguagem]. 🚀
+
+#Python #InicianteTech #Programacao</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post5')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 6 -->
+        <div class="template-card">
+            <div>
+                <h3>06. Organização de Estudos</h3>
+                <div class="post-preview" id="post6">Ajustando o cronograma da semana para manter os estudos em dia! A constância é a chave no aprendizado em dados. 📅
+
+#Estudos #Rotina #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post6')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 7 -->
+        <div class="template-card">
+            <div>
+                <h3>07. Exercício Prático</h3>
+                <div class="post-preview" id="post7">Finalizei um exercício prático hoje sobre [Assunto, ex: Filtros em SQL / Variáveis em Python]. Praticar ajuda muito a fixar! ✍️
+
+#Pratica #SQL #Python</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post7')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 8 -->
+        <div class="template-card">
+            <div>
+                <h3>08. Aula Concluída</h3>
+                <div class="post-preview" id="post8">Mais uma aula concluída no bootcamp de Análise de Dados. Passo a passo construindo a base técnica necessária! 📚
+
+#Bootcamp #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post8')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 9 -->
+        <div class="template-card">
+            <div>
+                <h3>09. Dica Básica de Atalho</h3>
+                <div class="post-preview" id="post9">Descobri hoje o atalho [Digite o atalho] para facilitar a navegação enquanto programo. Detalhes simples que ajudam na rotina! 💡
+
+#Productivity #TechTips</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post9')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 10 -->
+        <div class="template-card">
+            <div>
+                <h3>10. Artigo ou Leitura</h3>
+                <div class="post-preview" id="post10">Lendo um artigo interessante hoje sobre o mercado de Análise de Dados e como as empresas utilizam informações no dia a dia. 📖
+
+#Leitura #DataCulture</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post10')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 11 -->
+        <div class="template-card">
+            <div>
+                <h3>11. Revisão do Final de Semana</h3>
+                <div class="post-preview" id="post11">Aproveitando o fim de semana para revisar as anotações das aulas anteriores e alinhar o aprendizado. 📝
+
+#Revisao #Estudos #Constancia</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post11')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 12 -->
+        <div class="template-card">
+            <div>
+                <h3>12. Primeira Tabela / Consulta</h3>
+                <div class="post-preview" id="post12">Hoje executei minha primeira consulta em banco de dados usando o comando SELECT no SQL. Muito legal ver o resultado retornado! 🗄️
+
+#SQL #Database #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post12')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 13 -->
+        <div class="template-card">
+            <div>
+                <h3>13. Superando Dificuldades</h3>
+                <div class="post-preview" id="post13">Achei esse tópico de [Assunto] bem desafiador no começo, mas revisando os exercícios com calma consegui entender o conceito. 🧩
+
+#Persistencia #LearningJourney</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post13')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 14 -->
+        <div class="template-card">
+            <div>
+                <h3>14. Uso de Planilhas</h3>
+                <div class="post-preview" id="post14">Aprofundando algumas funções essenciais no Excel / Google Sheets hoje. Uma base forte em planilhas faz toda a diferença em dados! 📊
+
+#Excel #Sheets #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post14')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 15 -->
+        <div class="template-card">
+            <div>
+                <h3>15. Anotações Organizadas</h3>
+                <div class="post-preview" id="post15">Mantendo um caderno / Notion organizado para registrar as principais funções e comandos estudados nas aulas. 📓
+
+#Organizacao #Notion #Estudos</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post15')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 16 -->
+        <div class="template-card">
+            <div>
+                <h3>16. Início de Novo Módulo</h3>
+                <div class="post-preview" id="post16">Iniciando hoje um novo módulo de estudo focado em [Assunto]. Animado(a) para aprender essa nova etapa! 🏁
+
+#NovosDesafios #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post16')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 17 -->
+        <div class="template-card">
+            <div>
+                <h3>17. Trabalho em Equipe</h3>
+                <div class="post-preview" id="post17">Troca de ideias muito positiva hoje com os colegas de turma do bootcamp durante a aula prática. Aprendemos muito juntos! 🤝
+
+#Community #Networking</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post17')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 18 -->
+        <div class="template-card">
+            <div>
+                <h3>18. Conceito de Lógica</h3>
+                <div class="post-preview" id="post18">Estudando conceitos de lógica condicional hoje (IF/ELSE). A base do raciocínio lógico é indispensável para trabalhar com dados! ⚙️
+
+#Logic #Python #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post18')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 19 -->
+        <div class="template-card">
+            <div>
+                <h3>19. Certificado / Conclusão</h3>
+                <div class="post-preview" id="post19">Concluí mais um mini-curso / módulo de [Nome do Módulo]! Mais uma etapa concluída no meu plano de desenvolvimento. 📜
+
+#Certificado #Progresso</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post19')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 20 -->
+        <div class="template-card">
+            <div>
+                <h3>20. Primeiro Visual / Gráfico</h3>
+                <div class="post-preview" id="post20">Gerando meus primeiros gráficos simples em [Power BI / Python] hoje. Visualizar as informações facilita muito o entendimento! 📈
+
+#DataViz #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post20')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 21 -->
+        <div class="template-card">
+            <div>
+                <h3>21. Rotina de Estudos Noturna</h3>
+                <div class="post-preview" id="post21">Fechando a noite dedicando algumas horas para praticar exercícios de dados pós-trabalho. Foco no processo! 🌙
+
+#Rotina #Foco #Estudos</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post21')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 22 -->
+        <div class="template-card">
+            <div>
+                <h3>22. Importando Dados</h3>
+                <div class="post-preview" id="post22">Praticando a leitura e importação de arquivos CSV/Excel hoje no [Python / Power BI]. Começando a manipular os primeiros conjuntos de dados! 📁
+
+#Data #Python</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post22')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 23 -->
+        <div class="template-card">
+            <div>
+                <h3>23. Limpeza de Dados Simples</h3>
+                <div class="post-preview" id="post23">Aprendendo na prática a importância de tratar dados duplicados e valores nulos antes de qualquer análise. 🧹
+
+#DataCleaning #DataAnalytics</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post23')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 24 -->
+        <div class="template-card">
+            <div>
+                <h3>24. Comunidade e Eventos</h3>
+                <div class="post-preview" id="post24">Acompanhei uma live / webinar bacana hoje sobre carreiras na área de tecnologia. Sempre bom ouvir a experiência de outros profissionais! 🎙️
+
+#TechComm #Carreira</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post24')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 25 -->
+        <div class="template-card">
+            <div>
+                <h3>25. Desafio do Dia</h3>
+                <div class="post-preview" id="post25">Desafio técnico do dia superado! Resolver problemas pequenos diariamente constrói a confiança na área. 🏆
+
+#Challenge #GrowthMindset</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post25')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 26 -->
+        <div class="template-card">
+            <div>
+                <h3>26. Metodologia de Estudo</h3>
+                <div class="post-preview" id="post26">Testando a técnica Pomodoro hoje para focar na leitura da documentação e resolução dos exercícios. Ajudou muito na concentração! ⏱️
+
+#Productivity #Estudos</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post26')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 27 -->
+        <div class="template-card">
+            <div>
+                <h3>27. Listas e Dicionários</h3>
+                <div class="post-preview" id="post27">Entendendo a estrutura de listas e dicionários no Python durante a aula. Estruturar os dados de forma correta é fundamental! 🐍
+
+#Python #Coding</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post27')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 28 -->
+        <div class="template-card">
+            <div>
+                <h3>28. Operadores em SQL</h3>
+                <div class="post-preview" id="post28">Praticando filtros com WHERE, AND e OR em SQL. Consultas simples mas essenciais para encontrar as informações certas no banco. 🔍
+
+#SQL #Databases</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post28')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 29 -->
+        <div class="template-card">
+            <div>
+                <h3>29. Meta Mensal de Estudos</h3>
+                <div class="post-preview" id="post29">Metas para o mês definidas! Foco em manter a frequência de estudos e concluir os módulos práticos programados. 🎯
+
+#Metas #Planejamento</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post29')">📋 Copiar Modelo</button>
+        </div>
+
+        <!-- 30 -->
+        <div class="template-card">
+            <div>
+                <h3>30. Agradecimento à Turma</h3>
+                <div class="post-preview" id="post30">Muito bom poder contar com uma turma engajada no bootcamp. A troca de dúvidas e materiais ajuda todo mundo a evoluir junto! 🚀
+
+#Comunidade #LearningTogether</div>
+            </div>
+            <button class="btn-copy" onclick="copiarTexto('post30')">📋 Copiar Modelo</button>
         </div>
 
     </div>
 
-    <!-- SEÇÃO INFERIOR: BLOCO DE NOTAS & CAIXA DE DÚVIDAS -->
+    <!-- SEÇÃO INFERIOR: BLOCO DE NOTAS -->
     <div class="bottom-grid">
-        
         <div class="tool-card">
-            <h2>📝 Bloco de Notas & Insights</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Escreva aqui suas ideias e rascunhos. Fica salvo no seu navegador!</p>
-            <textarea class="notes-area" id="meus-insights" placeholder="Digite seus rascunhos aqui..." oninput="salvarAnotacoes()"></textarea>
+            <h2>📝 Bloco de Notas Pessoal</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Use este espaço para rascunhar seus lembretes e anotações simples.</p>
+            <textarea class="notes-area" id="meus-insights" placeholder="Digite suas anotações aqui..." oninput="salvarAnotacoes()"></textarea>
         </div>
-
-        <div class="tool-card">
-            <h2>💬 Envie sua Dúvida para a Evelin</h2>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Dúvidas sobre posicionamento, LinkedIn ou Análise de Dados?</p>
-            <form action="https://formspree.io/f/seu-id-aqui" method="POST">
-                <input type="text" name="nome" class="form-input" placeholder="Seu Nome / Turma" required>
-                <textarea name="duvida" class="form-text" rows="2" placeholder="Sua dúvida..." required></textarea>
-                <button type="submit" class="btn-submit">📩 Enviar Dúvida</button>
-            </form>
-        </div>
-
     </div>
 </div>
 
@@ -316,15 +523,15 @@ O papel do analista é unir código com visão de negócio.
     function copiarTexto(id) {
         const texto = document.getElementById(id).innerText;
         navigator.clipboard.writeText(texto);
-        alert('Modelo copiado! É só colar no LinkedIn. 🚀');
+        alert('Modelo copiado com sucesso!');
     }
 
     // Persistência de anotações
     const textarea = document.getElementById('meus-insights');
-    textarea.value = localStorage.getItem('data_pulse_notes_v2') || '';
+    textarea.value = localStorage.getItem('data_pulse_notes_v5') || '';
 
     function salvarAnotacoes() {
-        localStorage.setItem('data_pulse_notes_v2', textarea.value);
+        localStorage.setItem('data_pulse_notes_v5', textarea.value);
     }
 </script>
 
