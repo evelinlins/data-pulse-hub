@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Pulse Hub | Conteúdo & Routine</title>
+    <title>Data Pulse Hub | Evelin Lins</title>
     <style>
         :root {
-            --bg-primary: #0d0518;
-            --bg-card: #1a0933;
-            --accent-green: #00e699;
-            --accent-green-dark: #0a382c;
-            --accent-purple: #8c52ff;
-            --text-light: #f0f0f8;
-            --text-muted: #a0a0c0;
+            --bg-primary: #0f0817;
+            --bg-card: #1c102b;
+            --bg-card-inner: #13091e;
+            --accent-green: #2ea043;
+            --accent-green-dark: #1b5e3f;
+            --accent-purple: #6e40c9;
+            --text-light: #e6edf3;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-light);
             margin: 0;
@@ -26,121 +28,174 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
         }
 
         header {
             text-align: center;
             padding: 20px 0;
-            border-bottom: 2px solid var(--accent-green-dark);
-            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 25px;
         }
 
         h1 {
             color: var(--accent-green);
-            margin-bottom: 5px;
+            font-size: 2rem;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         p.subtitle {
             color: var(--text-muted);
             font-size: 0.95rem;
+            margin: 0;
         }
 
-        /* Grid de Conteúdo */
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media(min-width: 768px) {
-            .grid { grid-template-columns: 2fr 1fr; }
-        }
-
-        .card {
-            background-color: var(--bg-card);
+        /* Banner de Lembrete / Horário */
+        .reminder-banner {
+            background-color: var(--bg-card-inner);
             border: 1px solid var(--accent-green-dark);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-title {
-            color: var(--accent-green);
-            font-size: 1.2rem;
-            margin-top: 0;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
-        /* Gerador de Post */
+        .reminder-badge {
+            background: var(--accent-green-dark);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* Seletor de Categorias Livres */
+        .category-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .cat-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .cat-btn.active {
+            background: var(--accent-green-dark);
+            border-color: var(--accent-green);
+            color: #ffffff;
+        }
+
+        /* Cards Principais */
+        .card-group {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+
+        .card-header-title {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .post-box {
-            background-color: rgba(10, 56, 44, 0.4);
+            background-color: var(--bg-card-inner);
+            border: 1px solid var(--border-color);
             border-left: 4px solid var(--accent-green);
-            padding: 15px;
-            border-radius: 6px;
+            padding: 18px;
+            border-radius: 8px;
             margin: 15px 0;
             font-size: 0.95rem;
+            line-height: 1.6;
             white-space: pre-line;
             color: var(--text-light);
         }
 
         button.btn-primary {
-            background-color: var(--accent-green);
-            color: var(--bg-primary);
-            border: none;
-            padding: 10px 18px;
+            background-color: var(--accent-green-dark);
+            color: #ffffff;
+            border: 1px solid var(--accent-green);
+            padding: 10px 20px;
             border-radius: 6px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
         }
 
         button.btn-primary:hover {
-            background-color: #00b377;
-            transform: translateY(-2px);
+            background-color: var(--accent-green);
         }
 
-        /* Streak / Gamificação */
-        .streak-container {
-            text-align: center;
+        /* Grid de Sub-cards (Dicas) */
+        .subgrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .subcard {
+            background-color: var(--bg-card-inner);
+            border: 1px solid var(--border-color);
             padding: 15px;
-            background: linear-gradient(135deg, var(--bg-card), var(--accent-green-dark));
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
         }
 
-        .streak-count {
-            font-size: 2.5rem;
-            font-weight: bold;
+        .subcard h4 {
+            margin-top: 0;
             color: var(--accent-green);
+            margin-bottom: 8px;
         }
 
-        .day-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-        .day-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--accent-purple);
+        /* Anotações */
+        textarea.notes-input {
+            width: 100%;
+            height: 120px;
+            background-color: var(--bg-card-inner);
+            border: 1px solid var(--border-color);
             color: var(--text-light);
-            padding: 8px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            white-space: nowrap;
+            border-radius: 8px;
+            padding: 12px;
+            box-sizing: border-box;
+            font-family: inherit;
+            resize: vertical;
+            margin-top: 10px;
         }
 
-        .day-btn.active {
-            background: var(--accent-green);
-            color: var(--bg-primary);
-            font-weight: bold;
-            border-color: var(--accent-green);
+        /* Form Dúvidas */
+        input.question-input, textarea.question-text {
+            width: 100%;
+            background-color: var(--bg-card-inner);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 6px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            font-family: inherit;
         }
     </style>
 </head>
@@ -148,102 +203,124 @@
 
 <div class="container">
     <header>
-        <h1>📊 Data Pulse Hub</h1>
-        <p class="subtitle">Sua rotina de estudos & Gerador de Conteúdo Estratégico para o LinkedIn</p>
+        <h1>📊 DATA PULSE HUB</h1>
+        <p class="subtitle">Gerador de Conteúdo Sem Neura, Anotações & Mentoria</p>
     </header>
 
-    <!-- Seletor de Dias da Semana -->
-    <div class="day-selector">
-        <button class="day-btn active" onclick="carregarDia('terca')">Terça: Código & Aprendizado</button>
-        <button class="day-btn" onclick="carregarDia('quinta')">Quinta: Perrengue / Solução</button>
-        <button class="day-btn" onclick="carregarDia('sabado')">Sábado: Resumo Semanal</button>
-        <button class="day-btn" onclick="carregarDia('pro')">🚀 Trilha Pro (Negócio & UX)</button>
+    <!-- Banner de Lembrete Prático -->
+    <div class="reminder-banner">
+        <span>⏰ <strong>Dica de Horário:</strong> O horário nobre de engajamento no LinkedIn é por volta das <strong>10:00</strong> (entre 08h e 10h).</span>
+        <span class="reminder-badge">Meta: 1 a 2x/semana</span>
     </div>
 
-    <div class="grid">
-        <!-- Coluna Principal: O Conteúdo do Dia -->
-        <main class="card">
-            <h2 class="card-title" id="titulo-dia">💡 Sugestão de Post do Dia</h2>
-            <p id="desc-dia">Carregando sugestão...</p>
-            
-            <div class="post-box" id="template-post">
-                <!-- O template de post vai aparecer aqui -->
-            </div>
-
-            <button class="btn-primary" onclick="copiarPost()">📋 Copiar Template de Post</button>
-        </main>
-
-        <!-- Coluna Lateral: Gamificação & Lembretes -->
-        <aside>
-            <div class="streak-container">
-                <div>Sua Ofensiva de Posts</div>
-                <div class="streak-count" id="streak-num">🔥 0 Dias</div>
-                <button class="btn-primary" style="margin-top: 10px;" onclick="marcarPostfeito()">Marcar Post de Hoje!</button>
-            </div>
-
-            <div class="card">
-                <h3 class="card-title">📌 Dica Rápidas de UX</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">
-                    Lembre-se: posts curtos com espaçamento funcionam melhor. Evite blocos gigantes de texto no LinkedIn!
-                </p>
-            </div>
-        </aside>
+    <!-- Navegação por Temas Libres (Sem dias da semana) -->
+    <div class="category-selector">
+        <button class="cat-btn active" onclick="carregarConteudo('aprendizado')">💻 Aprendi Algo Novo</button>
+        <button class="cat-btn" onclick="carregarConteudo('erro')">🛠️ Resolvi um Erro/Perrengue</button>
+        <button class="cat-btn" onclick="carregarConteudo('resumo')">📈 Resumo Prático de Estudos</button>
+        <button class="cat-btn" onclick="carregarConteudo('pro')">💎 Trilha Pro (Estratégia & UX)</button>
     </div>
+
+    <!-- Bloco 1: Estrutura do Post Escolhido -->
+    <section class="card-group">
+        <h2 class="card-header-title" id="titulo-sessao">MODELO DE POST</h2>
+        <p id="desc-sessao" style="color: var(--text-muted);">Carregando modelo...</p>
+        
+        <div class="post-box" id="template-post"></div>
+
+        <button class="btn-primary" onclick="copiarPost()">📋 Copiar Estrutura do Post</button>
+    </section>
+
+    <!-- Bloco 2: Dicas Rápidas de Publicação -->
+    <section class="card-group">
+        <h2 class="card-header-title">💡 DICAS PARA BATER A META DA SEMANA</h2>
+        <div class="subgrid">
+            <div class="subcard">
+                <h4>Sem Pressão de Dias</h4>
+                <p>Poste no dia que você tiver algo interessante pra contar. O importante é manter de 1 a 2 posts no mês ou semana.</p>
+            </div>
+            <div class="subcard">
+                <h4>Horário Ideal</h4>
+                <p>Programe ou publique perto das 10h da manhã. As pessoas costumam dar uma olhada no LinkedIn nas pausas de trabalho.</p>
+            </div>
+            <div class="subcard">
+                <h4>Parágrafos Curtos</h4>
+                <p>Evite blocos longos de texto. Quebre as frases em linhas separadas para facilitar a leitura no celular.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloco 3: Bloco de Anotações Pessoais -->
+    <section class="card-group">
+        <h2 class="card-header-title">📝 MEU BLOCO DE ANOTAÇÕES & INSIGHTS</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Espaço livre para você rascunhar ideias, salvar trechos de código ou anotar o que quer postar depois. Fica salvo no navegador!</p>
+        <textarea class="notes-input" id="meus-insights" placeholder="Digite seus rascunhos e ideias aqui..." oninput="salvarAnotacoes()"></textarea>
+    </section>
+
+    <!-- Bloco 4: Caixa de Dúvidas para a Evelin -->
+    <section class="card-group">
+        <h2 class="card-header-title">💬 TEM DÚVIDAS DE MARKETING OU DADOS?</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
+            Quer ajuda para alinhar seu posicionamento no LinkedIn, dúvidas sobre carreira ou análise de dados? Manda aqui!
+        </p>
+        
+        <form action="https://formspree.io/f/seu-id-aqui" method="POST" id="form-duvidas">
+            <input type="text" name="nome" class="question-input" placeholder="Seu Nome / Turma" required>
+            <textarea name="duvida" class="question-text" rows="3" placeholder="Escreva sua dúvida aqui..." required></textarea>
+            <button type="submit" class="btn-primary">📩 Enviar Dúvida para a Evelin</button>
+        </form>
+    </section>
 </div>
 
 <script>
-    // Banco de dados dinâmico de sugestões
     const conteudos = {
-        terca: {
-            titulo: "💻 Terça-feira: Aprendizado Prático de Código",
-            desc: "Ideal para mostrar evolução técnica no Pandas ou Python sem medo de ser iniciante.",
-            template: `Hoje no bootcamp de Data Analytics foquei em aprender [Nome da Função, ex: .groupby()].\n\nNa prática, essa função serve para [explicar em 1 frase simples de negócio].\n\nO maior aprendizado foi entender que [sacada ou detalhe técnico].\n\nE você, qual função do Pandas mais usa no seu dia a dia? 👇\n\n#DataAnalytics #Python #Pandas #LearningInPublic`
+        aprendizado: {
+            titulo: "💻 MODELO: APRENDI ALGO NOVO",
+            desc: "Ideal para compartilhar uma biblioteca, um comando simples de Python/SQL ou um conceito prático.",
+            template: `Hoje estudando Análise de Dados foquei em entender melhor como funciona o [Nome do Comando ou Conceito].\n\nEm termos simples, ele serve para [explicar a utilidade prática em 1 frase].\n\nO detalhe mais legal que notei ao aplicar foi [compartilhe um detalhe ou sacada].\n\nVocê costuma usar essa abordagem nos seus projetos? 👇\n\n#DataAnalytics #Python #LearningInPublic`
         },
-        quinta: {
-            titulo: "⚠️ Quinta-feira: Perrengue & Aprendizado",
-            desc: "Humanize o seu perfil mostrando como resolveu um erro real no Google Colab.",
-            template: `Passei quase [X minutos] tentando rodar um código e o erro era simplesmente [ex: uma vírgula esquecida / nome da coluna errado].\n\nA solução foi [como você descobriu o erro].\n\nA jornada em Análise de Dados ensina rápido: saber debugar e entender a mensagem de erro é metade do trabalho! 😅\n\nJá passou por algum 'sintaxe error' engraçado essa semana?\n\n#DataAnalytics #Python #Debugging #LearningJourney`
+        erro: {
+            titulo: "🛠️ MODELO: RESOLVI UM PERRENGUE / ERRO",
+            desc: "Mostra capacidade de ler mensagens de erro e resolver problemas técnicos de sintaxe.",
+            template: `Passei um tempo tentando entender por que meu código não rodava no [Google Colab/VS Code].\n\nNo final, o problema era [ex: uma vírgula faltando / tipo de dado incorreto].\n\nEntender como ler as mensagens de erro é metade do trabalho de quem analisa dados. Seguimos aprendendo! 😅\n\nJá passou por algum erro bobo assim essa semana?\n\n#Python #DataAnalytics #Debugging`
         },
-        sabado: {
-            titulo: "📈 Sábado: Resumo Semanal da Turma",
-            desc: "Mostre consistência e organização do que foi abordado na semana do curso.",
-            template: `Mais uma semana concluída na formação de Data Analytics! 🚀\n\nO que rolou por aqui nos últimos dias:\n- [Tópico 1 estudado]\n- [Tópico 2 estudado]\n- [Mini-projeto ou exercício concluído]\n\nSeguimos evoluindo, um passo de cada vez.\n\n#DataAnalytics #Bootcamp #ContinuousLearning`
+        resumo: {
+            titulo: "📈 MODELO: RESUMO PRÁTICO DE ESTUDOS",
+            desc: "Ótimo para mostrar constância e o progresso geral da sua formação.",
+            template: `Passando para registrar mais um ciclo concluído na formação de Data Analytics! 🚀\n\nAlguns dos pontos principais que trabalhei recentemente:\n- [Tópico 1 estudado]\n- [Tópico 2 estudado]\n- [Mini-exercício ou projeto em andamento]\n\nConstância > Intensidade. Um passo por vez!\n\n#DataAnalytics #ContinuousLearning #Bootcamp`
         },
         pro: {
-            titulo: "🚀 Trilha Pro: Visão de Negócio & UX de Produto",
-            desc: "Sua camada exclusiva! Conecte análise de dados com impacto de receita, retenção e UX.",
-            template: `Se eu fosse Analista no [Nome da Empresa/App] hoje, qual métrica olharia para [Prevenir Churn / Melhorar Experiência]? 🎧📊\n\nO problema raramente é [ex: o preço], mas sim a perda de fluidez na jornada do usuário.\n\nSe o objetivo for antecipar o risco antes da perda de receita, estas 3 métricas seriam prioritárias:\n\n1️⃣ [Métrica 1 de Performance/UX]\n2️⃣ [Métrica 2 de Algoritmo/Engajamento]\n3️⃣ [Métrica 3 de Frequência de Uso]\n\nO papel dos dados é unir código + sensibilidade de produto pra agir antes do cliente ir embora.\n\n#ProductAnalytics #BusinessIntelligence #UX #DataAnalytics`
+            titulo: "💎 TRILHA PRO: ESTRATÉGIA DE MARCA & UX",
+            desc: "Conecte o uso de dados com métricas reais de negócio, retenção e comportamento do usuário.",
+            template: `Ao analisar o engajamento de uma marca ou produto, olhar apenas para métricas de vaidade pode enganar.\n\nPara entender se a experiência realmente retém o usuário, 3 pontos prioritários seriam:\n\n1️⃣ Frequência de retorno do usuário ao produto\n2️⃣ Clareza da proposta de valor na primeira interação\n3️⃣ Redução de atrito em fluxos principais\n\nO papel da análise de dados é unir sintaxe técnica com visão de negócio para transformar a experiência do usuário.\n\n#ProductAnalytics #UX #BusinessIntelligence`
         }
     };
 
-    function carregarDia(dia) {
-        document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+    function carregarConteudo(chave) {
+        document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
 
-        document.getElementById('titulo-dia').innerText = conteudos[dia].titulo;
-        document.getElementById('desc-dia').innerText = conteudos[dia].desc;
-        document.getElementById('template-post').innerText = conteudos[dia].template;
+        document.getElementById('titulo-sessao').innerText = conteudos[chave].titulo;
+        document.getElementById('desc-sessao').innerText = conteudos[chave].desc;
+        document.getElementById('template-post').innerText = conteudos[chave].template;
     }
 
     function copiarPost() {
         const texto = document.getElementById('template-post').innerText;
         navigator.clipboard.writeText(texto);
-        alert('Template copiado com sucesso! Agora é só colar no LinkedIn e personalizar. 🚀');
+        alert('Template copiado com sucesso! Agora é só colar no LinkedIn.');
     }
 
-    // Gamificação Simples (Streak salvo no localStorage)
-    let streak = localStorage.getItem('data_pulse_streak') || 0;
-    document.getElementById('streak-num').innerText = `🔥 ${streak} Dias`;
+    // Persistência de Anotações
+    const textarea = document.getElementById('meus-insights');
+    textarea.value = localStorage.getItem('data_pulse_notes') || '';
 
-    function marcarPostfeito() {
-        streak++;
-        localStorage.setItem('data_pulse_streak', streak);
-        document.getElementById('streak-num').innerText = `🔥 ${streak} Dias`;
-        alert('Boa! Mais um post garantido na sua constância!');
+    function salvarAnotacoes() {
+        localStorage.setItem('data_pulse_notes', textarea.value);
     }
 
-    // Inicializa
-    carregarDia('terca');
+    // Inicializa no primeiro tema
+    carregarConteudo('aprendizado');
 </script>
 
 </body>
