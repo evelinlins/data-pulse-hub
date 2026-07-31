@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pulse Hub | Conteúdo & Routine</title>
+    <style>
+        :root {
+            --bg-primary: #0d0518;
+            --bg-card: #1a0933;
+            --accent-green: #00e699;
+            --accent-green-dark: #0a382c;
+            --accent-purple: #8c52ff;
+            --text-light: #f0f0f8;
+            --text-muted: #a0a0c0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--accent-green-dark);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--accent-green);
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Grid de Conteúdo */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .grid { grid-template-columns: 2fr 1fr; }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-green-dark);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Gerador de Post */
+        .post-box {
+            background-color: rgba(10, 56, 44, 0.4);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            white-space: pre-line;
+            color: var(--text-light);
+        }
+
+        button.btn-primary {
+            background-color: var(--accent-green);
+            color: var(--bg-primary);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button.btn-primary:hover {
+            background-color: #00b377;
+            transform: translateY(-2px);
+        }
+
+        /* Streak / Gamificação */
+        .streak-container {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--bg-card), var(--accent-green-dark));
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .streak-count {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .day-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .day-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-purple);
+            color: var(--text-light);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .day-btn.active {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            font-weight: bold;
+            border-color: var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📊 Data Pulse Hub</h1>
+        <p class="subtitle">Sua rotina de estudos & Gerador de Conteúdo Estratégico para o LinkedIn</p>
+    </header>
+
+    <!-- Seletor de Dias da Semana -->
+    <div class="day-selector">
+        <button class="day-btn active" onclick="carregarDia('terca')">Terça: Código & Aprendizado</button>
+        <button class="day-btn" onclick="carregarDia('quinta')">Quinta: Perrengue / Solução</button>
+        <button class="day-btn" onclick="carregarDia('sabado')">Sábado: Resumo Semanal</button>
+        <button class="day-btn" onclick="carregarDia('pro')">🚀 Trilha Pro (Negócio & UX)</button>
+    </div>
+
+    <div class="grid">
+        <!-- Coluna Principal: O Conteúdo do Dia -->
+        <main class="card">
+            <h2 class="card-title" id="titulo-dia">💡 Sugestão de Post do Dia</h2>
+            <p id="desc-dia">Carregando sugestão...</p>
+            
+            <div class="post-box" id="template-post">
+                <!-- O template de post vai aparecer aqui -->
+            </div>
+
+            <button class="btn-primary" onclick="copiarPost()">📋 Copiar Template de Post</button>
+        </main>
+
+        <!-- Coluna Lateral: Gamificação & Lembretes -->
+        <aside>
+            <div class="streak-container">
+                <div>Sua Ofensiva de Posts</div>
+                <div class="streak-count" id="streak-num">🔥 0 Dias</div>
+                <button class="btn-primary" style="margin-top: 10px;" onclick="marcarPostfeito()">Marcar Post de Hoje!</button>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">📌 Dica Rápidas de UX</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                    Lembre-se: posts curtos com espaçamento funcionam melhor. Evite blocos gigantes de texto no LinkedIn!
+                </p>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script>
+    // Banco de dados dinâmico de sugestões
+    const conteudos = {
+        terca: {
+            titulo: "💻 Terça-feira: Aprendizado Prático de Código",
+            desc: "Ideal para mostrar evolução técnica no Pandas ou Python sem medo de ser iniciante.",
+            template: `Hoje no bootcamp de Data Analytics foquei em aprender [Nome da Função, ex: .groupby()].\n\nNa prática, essa função serve para [explicar em 1 frase simples de negócio].\n\nO maior aprendizado foi entender que [sacada ou detalhe técnico].\n\nE você, qual função do Pandas mais usa no seu dia a dia? 👇\n\n#DataAnalytics #Python #Pandas #LearningInPublic`
+        },
+        quinta: {
+            titulo: "⚠️ Quinta-feira: Perrengue & Aprendizado",
+            desc: "Humanize o seu perfil mostrando como resolveu um erro real no Google Colab.",
+            template: `Passei quase [X minutos] tentando rodar um código e o erro era simplesmente [ex: uma vírgula esquecida / nome da coluna errado].\n\nA solução foi [como você descobriu o erro].\n\nA jornada em Análise de Dados ensina rápido: saber debugar e entender a mensagem de erro é metade do trabalho! 😅\n\nJá passou por algum 'sintaxe error' engraçado essa semana?\n\n#DataAnalytics #Python #Debugging #LearningJourney`
+        },
+        sabado: {
+            titulo: "📈 Sábado: Resumo Semanal da Turma",
+            desc: "Mostre consistência e organização do que foi abordado na semana do curso.",
+            template: `Mais uma semana concluída na formação de Data Analytics! 🚀\n\nO que rolou por aqui nos últimos dias:\n- [Tópico 1 estudado]\n- [Tópico 2 estudado]\n- [Mini-projeto ou exercício concluído]\n\nSeguimos evoluindo, um passo de cada vez.\n\n#DataAnalytics #Bootcamp #ContinuousLearning`
+        },
+        pro: {
+            titulo: "🚀 Trilha Pro: Visão de Negócio & UX de Produto",
+            desc: "Sua camada exclusiva! Conecte análise de dados com impacto de receita, retenção e UX.",
+            template: `Se eu fosse Analista no [Nome da Empresa/App] hoje, qual métrica olharia para [Prevenir Churn / Melhorar Experiência]? 🎧📊\n\nO problema raramente é [ex: o preço], mas sim a perda de fluidez na jornada do usuário.\n\nSe o objetivo for antecipar o risco antes da perda de receita, estas 3 métricas seriam prioritárias:\n\n1️⃣ [Métrica 1 de Performance/UX]\n2️⃣ [Métrica 2 de Algoritmo/Engajamento]\n3️⃣ [Métrica 3 de Frequência de Uso]\n\nO papel dos dados é unir código + sensibilidade de produto pra agir antes do cliente ir embora.\n\n#ProductAnalytics #BusinessIntelligence #UX #DataAnalytics`
+        }
+    };
+
+    function carregarDia(dia) {
+        document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        document.getElementById('titulo-dia').innerText = conteudos[dia].titulo;
+        document.getElementById('desc-dia').innerText = conteudos[dia].desc;
+        document.getElementById('template-post').innerText = conteudos[dia].template;
+    }
+
+    function copiarPost() {
+        const texto = document.getElementById('template-post').innerText;
+        navigator.clipboard.writeText(texto);
+        alert('Template copiado com sucesso! Agora é só colar no LinkedIn e personalizar. 🚀');
+    }
+
+    // Gamificação Simples (Streak salvo no localStorage)
+    let streak = localStorage.getItem('data_pulse_streak') || 0;
+    document.getElementById('streak-num').innerText = `🔥 ${streak} Dias`;
+
+    function marcarPostfeito() {
+        streak++;
+        localStorage.setItem('data_pulse_streak', streak);
+        document.getElementById('streak-num').innerText = `🔥 ${streak} Dias`;
+        alert('Boa! Mais um post garantido na sua constância!');
+    }
+
+    // Inicializa
+    carregarDia('terca');
+</script>
+
+</body>
+</html>
